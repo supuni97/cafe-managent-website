@@ -1,4 +1,4 @@
-const mysql = require('musql');
+const mysql = require('mysql');
 require('dotenv').config();
 
 var connection = mysql.createConnection({
@@ -18,4 +18,4 @@ connection.connect((err)=>{
     }
 });
 
-Module.exports = connection;
+module.exports = connection;
