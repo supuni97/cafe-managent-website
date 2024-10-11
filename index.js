@@ -1,12 +1,17 @@
-const express = require('express')
+const express = require('express');
 var cors = require('cors');
 const connection = require('./connection');
 const userRoute = require('./routes/user');
 const app = express();
 
 app.use(cors());
-app.use(express.urlencoded({extends:true}));
+app.use(express.urlencoded({ extended: true }));  // Corrected 'extends' to 'extended'
 app.use(express.json());
-app.use('./user',userRoute);
+app.use('/user', userRoute); 
+
+const port = 8081;
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
 
 module.exports = app;
