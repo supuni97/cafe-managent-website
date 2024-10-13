@@ -5,7 +5,7 @@ var auth = require('../services/authentication');
 var checkRole = require('../services/checkRole');
 
 //add new category
-router.post('/add', auth.authenticateToken, checkRole, (req, res) => {
+router.post('/add', auth.authenticateToken, checkRole.checkRole, (req, res) => {
     let category = req.body;
     let query = "insert into category(name) values(?)";
 
@@ -19,7 +19,7 @@ router.post('/add', auth.authenticateToken, checkRole, (req, res) => {
 });
 
 //get all categories
-router.post('/get', auth.authenticateToken, (req, res, next) => {
+router.get('/get', auth.authenticateToken, (req, res, next) => {
     var query = "select * from category order by name";
 
     connection.query(query, (err, results) => {
@@ -33,7 +33,7 @@ router.post('/get', auth.authenticateToken, (req, res, next) => {
 
 //update
 router.patch('/update', auth.authenticateToken, checkRole.checkRole, (req, res, next) => {
-    let product = res.body;
+    let product = req.body;
     var query = "update category set name=? where id=?";
 
     connection.query(query, [product.name, product.id], (err, results) => {
