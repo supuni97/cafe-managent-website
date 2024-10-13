@@ -21,3 +21,5 @@ create table category(
 insert into user(name,contactNumber,email,password,status,role)
 values("Admin","0815675678","admin@gmail.com","admin","true","admin");
 
+
+
