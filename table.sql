@@ -34,4 +34,16 @@ create table product(
 insert into product(name,contactNumber,email,password,status,role)
 values("Admin","0815675678","admin@gmail.com","admin","true","admin");
 
+create table bill(
+    id int not null AUTO_INCREMENT,
+    uuid varchar(200) not null,
+    name varchar(255) not null,
+    email varchar(255) not null,
+    contactNumber varchar(20) not null,
+    paymentMethod varchar(50) not null,
+    total int not null,
+    productDetails JSON DEFAULT NULL,
+    createdBy varchar(255) not null,
+    primary key(id)
+);
 
